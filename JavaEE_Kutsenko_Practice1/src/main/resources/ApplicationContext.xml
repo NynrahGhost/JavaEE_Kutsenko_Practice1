@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="Constructor" class="com.example.demo.ConstructorInjection">
+	<constructor-arg value="This message is printed from constructor" />
+</bean>
+
+<bean id="Field" class="com.example.demo.FieldInjection" init-method="print">
+	<property name="initMsg" value="This message is read from field" />
+</bean>
+
+<bean id="1" class="com.example.demo.ListInjection$Node"><constructor-arg value="1"/></bean>
+<bean id="2" class="com.example.demo.ListInjection$Node"><constructor-arg value="2"/></bean>
+<bean id="3" class="com.example.demo.ListInjection$Node"><constructor-arg value="3"/></bean>
+
+<bean id="List" class="com.example.demo.ListInjection" init-method="print">
+	<property name="list">
+		<list>
+			<ref bean="1"/>
+			<ref bean="2"/>
+			<ref bean="3"/>
+		</list>
+	</property>
+</bean>
+
+
+</beans>
